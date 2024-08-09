@@ -1,0 +1,109 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    font-size: 1rem;
+
+    /* Raw size variables */
+
+    --md: 1em;
+    /* It's okay to use em here because the root font size
+                    has been manually set to 1rem */
+
+    --scaleFactor: 1.618;
+
+    --sm: calc(var(--md) / var(--scaleFactor));
+    --xs: calc(var(--sm) / var(--scaleFactor));
+    --2xs: calc(var(--xs) / var(--scaleFactor));
+
+    --lg: calc(var(--md) * var(--scaleFactor));
+    --xl: calc(var(--lg) * var(--scaleFactor));
+    --2xl: calc(var(--xl) * var(--scaleFactor));
+
+    /*Increments*/
+
+    --wholestep: 1.618;
+    --halfstep: 1.272;
+    --quarterstep: 1.128;
+    --eighthstep: 1.061;
+
+    --wholestep-dec: 0.618;
+    --halfstep-dec: 0.272;
+    --quarterstep-dec: 0.128;
+    --eighthstep-dec: 0.061;
+
+    /* Colors */
+
+    --background: #fefbff;
+    --onsurface: #1b1b1f;
+    --primary: #4658ac;
+    --surfacecontainerlowest: #fff;
+    --onsurfacevariant: #45464f;
+  
+    --onprimary: #fefbff;
+    --outlinevariant: #c6c5d0;
+    --shadow: #000;
+    --info: #1758c7;
+    --secondary: #5a5d72;
+    --outline: #767680;
+    --primary-inverse: #b9c3ff;
+    --surfacecontainerlow: #cbdadd;
+    --successcontainer: #92f8b4;
+    --onsuccesscontainer: #00210f;
+    --infocontainer: #dae2ff;
+    --oninfocontainer: #001946;
+    --warningcontainer: #ffdea7;
+    --onwarningcontainer: #271900;
+    --errorcontainer: #ffdad6;
+    --onerrorcontainer: #410002;
+    --onsecondarycontainer: #171b2c;
+    --primarycontainer: #dee1ff;
+    --onprimarycontainer: #001258;
+    --onsecondary: #fff;
+    --secondarycontainer: #dfe1f9;
+    --tertiary: #76546e;
+    --ontertiary: #fff;
+    --tertiarycontainer: #ffd7f2;
+    --ontertiarycontainer: #2d1228;
+    --error: #ba1a1a;
+    --onerror: #fff;
+    --onbackground: #1b1b1f;
+    --surface: #e8eced;
+    --surfacevariant: #e3e1ec;
+    --scrim: #000;
+    --inversesurface: #303034;
+    --oninverse: #f3f0f4;
+    --success: #006d3d;
+    --onsuccess: #fff;
+    --warning: #7c5800;
+    --onwarning: #fff;
+    --oninfo: #fff;
+    --primaryfixed: #dee1ff;
+    --onprimaryfixed: #001258;
+    --primaryfixeddim: #b9c3ff;
+    --onprimaryfixedvariant: #2d3f93;
+    --secondaryfixed: #dfe1f9;
+    --onsecondaryfixed: #171b2c;
+    --secondaryfixeddim: #c3c5dd;
+    --onsecondaryfixedvariant: #434659;
+    --tertiaryfixed: #ffd7f2;
+    --ontertiaryfixed: #2d1228;
+    --tertiaryfixeddim: #e5bad8;
+    --ontertiaryfixedvariant: #5c3c55;
+    --surfacedim: #dcd9de;
+    --surfacebright: #fbf8fd;
+    --surfacecontainer: #f0edf1;
+    --surfacecontainerhigh: #eae7ec;
+    --surfacecontainerhighest: #e4e1e6;
+
+    /* Make text look sharper */
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-smooth: never;
+    scroll-behavior:smooth;
+    font-family: system-ui, sans-serif;
+  }
+}
