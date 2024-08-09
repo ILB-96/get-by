@@ -5,7 +5,6 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import Select from "react-select";
-import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
@@ -13,12 +12,13 @@ import { Textarea } from "@/components/ui/textarea";
 import { useToast } from "@/hooks/use-toast";
 import { cn } from "@/lib/utils";
 import ErrorBubble from "./error-bubble";
-import { SectionContainer } from "@/styles/style";
+import { PrimaryButton, SectionContainer } from "@/styles/style";
 import { createGroupAction } from "@/actions/group-action";
 import MenuList from "@/components/ui/menu-list";
 import useAuth from "@/hooks/use-auth";
 import { Category } from "@prisma/client";
 import { useRouter } from "next/navigation";
+import { Icons } from "../icons";
 
 const formSchema = z.object({
   name: z.string().min(1).max(50),
@@ -37,7 +37,7 @@ const GroupForm = () => {
     defaultValues: {
       name: "",
       description: "",
-      country: "",
+      country: "Global",
       category: "Technology",
       subCategory: "Smartphones",
       expireAt: new Date(),
@@ -48,6 +48,7 @@ const GroupForm = () => {
   const router = useRouter();
 
   const onSubmit = async (data: FormSchema) => {
+    console.log(data);
     if (!user) {
       console.error("User is not authenticated");
       return;
@@ -84,19 +85,22 @@ const GroupForm = () => {
           name={key as keyof FormSchema}
           render={({ field }) => (
             <FormItem className="w-52">
-              <Select
-                options={formatOptions(value.selections)}
-                onChange={(selected) => {
-                  field.onChange(selected?.value);
-                }}
-                value={
-                  field.value
-                    ? { value: field.value, label: field.value }
-                    : null
-                }
-                placeholder={value.title}
-                components={{ MenuList }}
-              />
+              <Label htmlFor={key}>{value.title}</Label>
+              <FormControl>
+                <Select
+                  options={formatOptions(value.selections)}
+                  onChange={(selected) => {
+                    field.onChange(selected?.value);
+                  }}
+                  value={
+                    field.value
+                      ? { value: field.value, label: field.value }
+                      : null
+                  }
+                  placeholder={value.title}
+                  components={{ MenuList }}
+                />
+              </FormControl>
             </FormItem>
           )}
         />
@@ -104,7 +108,7 @@ const GroupForm = () => {
     [form.control]
   );
 
-  if (loading) return <div>Loading...</div>; // Show loading state
+  if (loading) return <Icons.Loader />;
 
   return (
     <SectionContainer>
@@ -114,12 +118,14 @@ const GroupForm = () => {
             noValidate
             onSubmit={form.handleSubmit(onSubmit)}
             aria-label="Contact Form"
+            className="grid grid-cols-2 gap-4 grid-rows-[auto_auto_1fr_auto] max-h-[30rem]"
           >
             <FormField
               control={form.control}
               name="name"
               render={({ field }) => (
-                <FormItem className="user-box w-2/5">
+                <FormItem>
+                  <Label htmlFor="name">Name</Label>
                   <FormControl>
                     <Input
                       type="text"
@@ -128,14 +134,13 @@ const GroupForm = () => {
                       autoComplete="name"
                       aria-invalid={!!form.formState.errors.name}
                       className={cn(
-                        "shadow-md focus-visible:ring-ring rounded-sm",
+                        "focus-visible:ring-ring rounded-xs h-[2.35rem] bg-white border-gray-300",
                         form.formState.errors.name && "border-destructive"
                       )}
                       required
                       {...field}
                     />
                   </FormControl>
-                  <Label htmlFor="name">Name</Label>
                   <ErrorBubble error={form.formState.errors.name} />
                 </FormItem>
               )}
@@ -146,7 +151,8 @@ const GroupForm = () => {
               control={form.control}
               name="description"
               render={({ field }) => (
-                <FormItem className="user-box">
+                <FormItem className="col-span-2 h-full">
+                  <Label htmlFor="description">Description</Label>
                   <FormControl>
                     <Textarea
                       required
@@ -162,15 +168,46 @@ const GroupForm = () => {
                       {...field}
                     />
                   </FormControl>
-                  <Label htmlFor="description">Description</Label>
                   <ErrorBubble error={form.formState.errors.description} />
                 </FormItem>
               )}
             />
-            <div className="my-4 flex w-full justify-center">
-              <Button type="submit" disabled={isSubmitting}>
+            <FormField
+              control={form.control}
+              name="expireAt"
+              render={({ field }) => (
+                <FormItem className="size-fit">
+                  <Label htmlFor="expireAt">Expiration Date</Label>
+                  <FormControl>
+                    <Input
+                      type="date"
+                      id="expireAt"
+                      aria-invalid={!!form.formState.errors.expireAt}
+                      className={cn(
+                        "focus-visible:ring-ring rounded-xs h-[2.35rem] bg-white border-gray-300",
+                        form.formState.errors.name && "border-destructive"
+                      )}
+                      value={
+                        field.value
+                          ? field.value.toISOString().split("T")[0]
+                          : new Date().toISOString().split("T")[0]
+                      }
+                      onChange={(e) =>
+                        field.onChange(
+                          (e.target as HTMLInputElement).valueAsDate || null
+                        )
+                      }
+                      required
+                    />
+                  </FormControl>
+                  <ErrorBubble error={form.formState.errors.expireAt} />
+                </FormItem>
+              )}
+            />
+            <div className="mt-auto mb-2">
+              <PrimaryButton type="submit" disabled={isSubmitting}>
                 <span>Submit</span>
-              </Button>
+              </PrimaryButton>
             </div>
           </form>
         </Form>
