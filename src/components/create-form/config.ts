@@ -8,7 +8,7 @@ function getEnumValues<T extends Record<string, string>>(enumObj: T): string[] {
 export let options = {
   country: {
     title: "Country",
-    selections: getNames().sort(),
+    selections: ["Global", ...getNames().sort()],
   },
   category: {
     title: "Category",
