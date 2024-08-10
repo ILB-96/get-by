@@ -1,13 +1,13 @@
-import Contact from "@/components/contact/contact";
+import ContactForm from "@/components/contact/contact";
 import { MainContainer } from "@/styles/style";
 import React from "react";
 
-const About = () => {
+const Contact = () => {
   return (
     <MainContainer>
-      <Contact />
+      <ContactForm />
     </MainContainer>
   );
 };
 
-export default About;
+export default Contact;
