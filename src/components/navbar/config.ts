@@ -15,7 +15,7 @@ export const navItems: navItem[] = [
   },
 ];
 
-export const logggedInNavItems: navItem[] = [
+export const sessionNavItems: navItem[] = [
   { name: "My Groups", href: "/groups/active" },
   { name: "Create Group", href: "/groups/create" },
   { name: "Settings", href: "/profile" },

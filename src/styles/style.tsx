@@ -2,6 +2,7 @@
 import { styled, css } from "styled-components";
 import { Button } from "@/components/ui/button";
 import Link from "next/link";
+import Image from "next/image";
 const MainGridStyle = css`
   --gap: clamp(1rem, 6vw, 3rem);
   display: grid;
@@ -93,6 +94,12 @@ export const LogoLink = styled(Link)`
   width: fit-content;
   min-width: 6rem;
 `;
+export const ProfileImage = styled(Image)`
+  ${ShadowStyle}
+  margin: auto;
+  border-radius: 999px;
+`;
+
 export const NavContent = styled.div`
   ${ContentStyle}
   grid-column-end: -3;
@@ -119,7 +126,7 @@ export const NavLink = styled(Link)`
     transition: 200ms ease;
   }
   &:hover:before {
-    width: 40%;
+    width: 50%;
   }
   &:after {
     content: "";
@@ -131,10 +138,10 @@ export const NavLink = styled(Link)`
     background-color: var(--primary);
     border-radius: var(--xl);
     z-index: -1;
-    transition: 200ms ease;
+    transition: 250ms ease;
   }
   &:hover:after {
-    width: 40%;
+    width: 50%;
   }
 `;
 
