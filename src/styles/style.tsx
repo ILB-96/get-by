@@ -52,11 +52,12 @@ export const BodyContainer = styled.body`
   background-color: var(--background);
   color: var(--onbackground);
   position: relative;
+  min-height: 100vh;
 `;
 
 export const MainContainer = styled.main`
   ${MainStyle}
-  min-height: 85vh;
+
   padding-top: var(--xl);
   place-content: start;
 `;
@@ -78,6 +79,7 @@ export const NavContainer = styled.nav`
   padding: var(--md) 0;
   top: 0;
   z-index: 50;
+  max-height: 4.5rem;
 
   > button {
     grid-column-end: -2;
@@ -89,6 +91,7 @@ export const NavContainer = styled.nav`
 export const LogoLink = styled(Link)`
   margin: auto;
   width: fit-content;
+  min-width: 6rem;
 `;
 export const NavContent = styled.div`
   ${ContentStyle}
@@ -96,9 +99,42 @@ export const NavContent = styled.div`
   :nth-child(2) {
     grid-column-start: 3;
   }
-  > * {
-    width: fit-content;
-    margin-right: auto;
+`;
+export const NavLink = styled(Link)`
+  width: fit-content;
+  padding: var(--sm);
+  margin-right: auto;
+  border-radius: var(--2xl);
+  position: relative;
+  font-weight: 500;
+  &:before {
+    content: "";
+    position: absolute;
+    bottom: 8px;
+    width: 0;
+    height: 2px;
+    background-color: var(--primary);
+    border-radius: var(--xl);
+    z-index: -1;
+    transition: 200ms ease;
+  }
+  &:hover:before {
+    width: 40%;
+  }
+  &:after {
+    content: "";
+    position: absolute;
+    bottom: 8px;
+    width: 0;
+    right: 8px;
+    height: 2px;
+    background-color: var(--primary);
+    border-radius: var(--xl);
+    z-index: -1;
+    transition: 200ms ease;
+  }
+  &:hover:after {
+    width: 40%;
   }
 `;
 
@@ -230,9 +266,14 @@ export const FeatureContainer = styled.div`
 export const FooterContainer = styled.footer`
   ${MainStyle}
   ${SmallShadowStyle}
+  position: relative;
+  width: 100%;
+  bottom: 0;
+  max-height: 3.5rem;
   background-color: var(--surface);
   display: flex;
   justify-content: space-around;
   padding: var(--md) 0;
   z-index: 40;
+  margin-top: auto;
 `;

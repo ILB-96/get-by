@@ -6,12 +6,12 @@ export const navItems: navItem[] = [
     href: "/",
   },
   {
-    name: "About",
-    href: "/about",
-  },
-  {
     name: "Groups",
     href: "/groups",
+  },
+  {
+    name: "Contact",
+    href: "/contact",
   },
 ];
 
