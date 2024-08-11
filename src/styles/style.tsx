@@ -83,8 +83,6 @@ export const NavContainer = styled.nav`
   max-height: 4.5rem;
 
   > button {
-    grid-column-end: -2;
-    grid-column: span 1;
     width: fit-content;
     margin-left: auto;
   }
@@ -92,6 +90,7 @@ export const NavContainer = styled.nav`
 export const LogoLink = styled(Link)`
   margin: auto;
   width: fit-content;
+
   min-width: 6rem;
 `;
 export const ProfileImage = styled(Image)`

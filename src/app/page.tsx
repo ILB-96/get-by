@@ -21,7 +21,7 @@ export default function Home() {
         <HeroContainer>
           <TextContainer>
             <HeroTitle>
-              Join Forces to<span>Save More</span>
+              Join Forces&nbsp;to<span>Save&nbsp;More</span>
             </HeroTitle>
             <Paragraph>
               GetBy helps you connect with others who have similar{" "}
@@ -42,10 +42,10 @@ export default function Home() {
       </SectionContainer>
 
       <SectionContainer id="features">
-        <SectionTitle>How It Works</SectionTitle>
+        <SectionTitle>How It&nbsp;Works</SectionTitle>
         <FeatureContainer>
           <TextContainer>
-            <SectionSubtitle>Find Your Group</SectionSubtitle>
+            <SectionSubtitle>Find Your&nbsp;Group</SectionSubtitle>
             <Paragraph>
               Connect with people who have similar purchasing interests.
             </Paragraph>
@@ -88,7 +88,7 @@ export default function Home() {
       </SectionContainer>
 
       <SectionContainer id="benefits">
-        <SectionTitle>Why Choose GetBuy?</SectionTitle>
+        <SectionTitle>Why Choose&nbsp;GetBy?</SectionTitle>
         <BenefitsContainer>
           <TextContainer>
             <SectionSubtitle>Save Money</SectionSubtitle>
@@ -109,7 +109,7 @@ export default function Home() {
         </BenefitsContainer>
       </SectionContainer>
 
-      <PrimaryButton>Ready to Save More?</PrimaryButton>
+      <PrimaryButton>Ready to Save&nbsp;More?</PrimaryButton>
       <SectionContainer id="cta" />
     </MainContainer>
   );

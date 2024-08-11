@@ -14,7 +14,7 @@ export const SignInButton = () => {
   };
 
   return (
-    <Button variant="outline" onClick={handleSignIn} disabled={isPending}>
+    <Button onClick={handleSignIn} disabled={isPending}>
       {isPending && <Icons.Loader />}
       Sign in
     </Button>

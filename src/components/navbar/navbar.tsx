@@ -5,9 +5,7 @@ import { authOptions } from "@/app/api/auth/[...nextauth]/auth-options";
 
 import BigNav from "./big-nav";
 import { NavContainer } from "@/styles/style";
-import { SignOutButton } from "./sign-out-button";
 import SessionDropdown from "./session-dropdown";
-
 const Navbar = async () => {
   const session = await getServerSession(authOptions);
 
